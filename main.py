@@ -1,3 +1,4 @@
+import base64
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from tonsdk.contract.token.nft import NFTItem
@@ -20,7 +21,7 @@ class CreateMessgeRequest(BaseModel):
 
 @app.post("/send_message")
 def send_message(request: CreateMessgeRequest):
-    key= b'2GCELT6Qssd7fNbNsu8hjD9-pswwTItZZ4_W7zDlE6o='
+    key= base64.b64decode(request.key)
     mnemonic =  base64.b64decode(request.mnemonic)
  
     decrypted_mnemonic = decrypt_strings(mnemonic, key)
