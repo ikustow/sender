@@ -41,7 +41,7 @@ def send_message(request: CreateMessageRequest):
         body = NFTItem().create_transfer_body(new_owner_address=Address(request.new_owner_address))
         query = wallet.create_transfer_message(
             to_addr=request.to_addr,
-            amount=to_nano(0.001, 'ton'),
+            amount=to_nano(0.01, 'ton'),
             seqno=int(0x4),
             payload=body
         )
