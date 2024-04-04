@@ -47,7 +47,7 @@ def send_message(request: CreateMessageRequest):
             payload=body
         )
 
-        sleep(1)
+       
         boc = bytes_to_b64str(query["message"].to_boc(False))
         print(boc)
         #url = 'https://toncenter.com/api/v2/sendBoc'
