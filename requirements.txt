@@ -3,3 +3,4 @@ tonsdk
 fastapi
 gunicorn
 uvicorn
+requests
