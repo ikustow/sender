@@ -22,8 +22,9 @@ def decrypt_strings(encrypted_message, key):
 
 @app.post("/send_message")
 def send_message(request: CreateMessageRequest):
-    key = base64.b64decode(request.key)
-    mnemonic = base64.b64decode(request.mnemonic)
+    key= request.key.encode() 
+    mnemonic =  request.mnemonic.encode() 
+
 
     if not mnemonic:
         raise HTTPException(status_code=400, detail="Mnemonic cannot be empty")
