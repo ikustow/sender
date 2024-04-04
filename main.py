@@ -25,12 +25,12 @@ def send_message(request: CreateMessageRequest):
     key= request.key.encode() 
     mnemonic =  request.mnemonic.encode() 
 
-
     if not mnemonic:
         raise HTTPException(status_code=400, detail="Mnemonic cannot be empty")
 
     try:
         decrypted_mnemonic = decrypt_strings(mnemonic, key)
+        print(decrypted_mnemonic)
         mnemonics, pub_k, priv_k, wallet = Wallets.from_mnemonics(
             mnemonics=decrypted_mnemonic[0], 
             version=WalletVersionEnum.v4r2, 
