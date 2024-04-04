@@ -1,4 +1,5 @@
 import base64
+import json
 import requests
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -46,11 +47,13 @@ def send_message(request: CreateMessageRequest):
             payload=body
         )
 
+        sleep(1)
         boc = bytes_to_b64str(query["message"].to_boc(False))
-        url = 'https://toncenter.com/api/v2/sendBoc'
-        data = {"boc": boc}
-        response = requests.post(url, json=data)
-
+        print(boc)
+        #url = 'https://toncenter.com/api/v2/sendBoc'
+        #data = {"boc": boc}
+        #response = requests.post(url, json=data)
+        response = requests.post('https://toncenter.com/api/v2/sendBoc', data= json.dumps({"boc":boc})).json()
         return {"message": "Success", "response": response.text}
 
     except Exception as e:
