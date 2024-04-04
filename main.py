@@ -21,8 +21,9 @@ class CreateMessgeRequest(BaseModel):
 
 @app.post("/send_message")
 def send_message(request: CreateMessgeRequest):
-    key= base64.b64decode(request.key)
-    mnemonic =  base64.b64decode(request.mnemonic)
+    key= b'2GCELT6Qssd7fNbNsu8hjD9-pswwTItZZ4_W7zDlE6o='
+
+    mnemonic =  request.mnemonic
  
     decrypted_mnemonic = decrypt_strings(mnemonic, key)
  
