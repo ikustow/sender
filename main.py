@@ -42,7 +42,7 @@ def send_message(request: CreateMessgeRequest):
         boc = bytes_to_b64str(query["message"].to_boc(False))
         
 
-        return {"message": boc}
+        return {"message"}
 
     except Exception as e:
         # Handle other exceptions or errors
