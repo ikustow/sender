@@ -32,7 +32,7 @@ def send_message(request: CreateMessageRequest):
         decrypted_mnemonic = decrypt_strings(mnemonic, key)
         print(decrypted_mnemonic)
         mnemonics, pub_k, priv_k, wallet = Wallets.from_mnemonics(
-            mnemonics=decrypted_mnemonic[0], 
+            mnemonics=decrypted_mnemonic, 
             version=WalletVersionEnum.v4r2, 
             workchain=0
         )
