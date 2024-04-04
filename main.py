@@ -31,7 +31,6 @@ def send_message(request: CreateMessageRequest):
 
     try:
         decrypted_mnemonic = decrypt_strings(mnemonic, key)
-        print(decrypted_mnemonic)
         mnemonics, pub_k, priv_k, wallet = Wallets.from_mnemonics(
             mnemonics=decrypted_mnemonic, 
             version=WalletVersionEnum.v4r2, 
@@ -47,14 +46,12 @@ def send_message(request: CreateMessageRequest):
             payload=body
         )
 
-       
         boc = bytes_to_b64str(query["message"].to_boc(False))
-        print(boc)
         #url = 'https://toncenter.com/api/v2/sendBoc'
         #data = {"boc": boc}
         #response = requests.post(url, json=data)
         response = requests.post('https://toncenter.com/api/v2/sendBoc', data= json.dumps({"boc":boc})).json()
-        return {"message": "Success", "response": response.text}
+        return {"message": "Success", "response": response}
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
