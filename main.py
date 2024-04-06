@@ -42,7 +42,7 @@ def send_message(request: CreateMessageRequest):
         query = wallet.create_transfer_message(
             to_addr=request.to_addr,
             amount=to_nano(0.01, 'ton'),
-            seqno=int(0x6),
+            seqno=int(0x9),
             payload=body
         )
 
