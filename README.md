@@ -75,7 +75,7 @@ To retrieve NFTs based on the owner, an API request to the blockchain was used, 
 
 In this case, the owner's address is the wallet address that was used when logging into the application.
 
-<img src="assets/img2.png" alt="Deploy process" width="500" height="350">
+![img2.png](assets%2Fimg2.png)
 
 ```dart
 import 'package:dio/dio.dart';
