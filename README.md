@@ -28,7 +28,7 @@ In the example, authentication is initiated through the desktop web, and confirm
 Authentication is performed using custom code functionality in the low-code platform Flutterflow, which allows integrating any Dart code. For blockchain communication, the ToNConnect option is used, which enables obtaining a QR code for authentication and linking a wallet to the application.
 
 
-<img src="assets/img1.png" alt="Deploy process" width="550" height="350">
+<img src="assets/img1.png" alt="Deploy process" width="600" height="350">
 
 ```dart
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -63,11 +63,11 @@ Future toInit() async {
 
 A collection of NFTs was created and transferred to a test wallet in advance to work with NFTs, for the purpose of demonstrating the presence of multiple NFT objects.
 
-<img src="assets/img5.png" alt="Deploy process" width="400" height="300">
+<img src="assets/img5.png" alt="Deploy process" width="600" height="350">
 
 ## Demo 
 
-<img src="assets/gif2.gif" alt="Deploy process" width="600" height="400">
+<img src="assets/gif2.gif" alt="Deploy process" width="600" height="350">
 
 ## Custom code 
 ### Receive data
@@ -75,7 +75,7 @@ To retrieve NFTs based on the owner, an API request to the blockchain was used, 
 
 In this case, the owner's address is the wallet address that was used when logging into the application.
 
-<img src="assets/img2.png" alt="Deploy process" width="400" height="300">
+<img src="assets/img2.png" alt="Deploy process" width="600" height="350">
 
 ```dart
 import 'package:dio/dio.dart';
@@ -130,7 +130,7 @@ Future getData() async {
 ```
 ### Sending data
 
-<img src="assets/img3.png" alt="Deploy process" width="400" height="300">
+<img src="assets/img3.png" alt="Deploy process" width="600" height="350">
 
 The sending of NFTs occurs through a custom Python service provided in the current repository. On the Flutterflow application side, a message is prepared containing the NFT contract address and the new owner's address (the new owner being my second test wallet, its address is hardcoded in the application as a constant).
 
@@ -140,7 +140,7 @@ The sending of NFTs occurs through a custom Python service provided in the curre
 
 You can see a step-by-step process of working with the TON blockchain and a custom NFT service on the UML diagram.
 
-<img src="assets/img4.png" alt="Deploy process" width="400" height="500">
+<img src="assets/img4.png" alt="Deploy process" width="600" height="350">
 
 
 
