@@ -27,8 +27,8 @@ In the example, authentication is initiated through the desktop web, and confirm
 
 Authentication is performed using custom code functionality in the low-code platform Flutterflow, which allows integrating any Dart code. For blockchain communication, the ToNConnect option is used, which enables obtaining a QR code for authentication and linking a wallet to the application.
 
+![img1.png](assets%2Fimg1.png)
 
-<img src="assets/img1.png" alt="Deploy process" width="600" height="350">
 
 ```dart
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
