@@ -1,7 +1,7 @@
 # Description
 The current project is built using the Flutterflow low-code builder, a custom Python service, and hosted on the Render hosting service.
 
-The project involves integration with the blockchain in the NFT sector, utilizing authentication through the TonKeeper wallet and sending NFTs via a custom Python service.
+The project involves integration with the blockchain in the NFT area, utilizing authentication through the TonKeeper wallet and sending NFTs via a custom Python service.
 
 <img src="assets/img.png" alt="Deploy process" width="400" height="300">
 
