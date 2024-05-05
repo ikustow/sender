@@ -63,7 +63,7 @@ Future toInit() async {
 
 A collection of NFTs was created and transferred to a test wallet in advance to work with NFTs, for the purpose of demonstrating the presence of multiple NFT objects.
 
-<img src="assets/img5.png" alt="Deploy process" width="600" height="350">
+<img src="assets/img5.png" alt="Deploy process" width="400" height="350">
 
 ## Demo 
 
@@ -130,7 +130,7 @@ Future getData() async {
 ```
 ### Sending data
 
-<img src="assets/img3.png" alt="Deploy process" width="600" height="350">
+<img src="assets/img3.png" alt="Deploy process" width="500" height="350">
 
 The sending of NFTs occurs through a custom Python service provided in the current repository. On the Flutterflow application side, a message is prepared containing the NFT contract address and the new owner's address (the new owner being my second test wallet, its address is hardcoded in the application as a constant).
 
@@ -140,7 +140,7 @@ The sending of NFTs occurs through a custom Python service provided in the curre
 
 You can see a step-by-step process of working with the TON blockchain and a custom NFT service on the UML diagram.
 
-<img src="assets/img4.png" alt="Deploy process" width="600" height="350">
+<img src="assets/img4.png" alt="Deploy process" width="400" height="500">
 
 
 
