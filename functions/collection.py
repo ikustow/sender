@@ -17,6 +17,6 @@ async def get_collection():
         data1 = await client.get_nft_items(nft_addresses=[item.address])
 
         print(data1[0]) 
- 
+    return {"message": "Success", "response": data}
 ##asyncio.run(get_collection())
 
