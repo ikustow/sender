@@ -10,12 +10,15 @@ from tonsdk.utils import to_nano, bytes_to_b64str, Address
 from tonsdk.contract.wallet import Wallets, WalletVersionEnum
 from cryptography.fernet import Fernet
 
+<<<<<<< HEAD
 
 def decrypt_strings(encrypted_message, key):
     fernet = Fernet(key)
     decrypted_message = fernet.decrypt(encrypted_message).decode()
     return decrypted_message.split("\n")
 
+=======
+>>>>>>> 1f9a72f45e30fd298dedad70a9be35902e577e5a
 def send_message(request: CreateMessageRequest):
     key= request.key.encode() 
     mnemonic =  request.mnemonic.encode() 
