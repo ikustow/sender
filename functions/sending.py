@@ -2,7 +2,6 @@
 import json
 from fastapi import HTTPException
 import requests
-from main import decrypt_strings
 from model.CreateMessageRequestClass import CreateMessageRequest
 from pydantic import BaseModel
 from tonsdk.contract.token.nft import NFTItem
