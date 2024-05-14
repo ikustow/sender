@@ -18,5 +18,5 @@ async def get_collection():
 
         print(data1[0]) 
  
-asyncio.run(get_collection())
+##asyncio.run(get_collection())
 
