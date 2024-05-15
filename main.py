@@ -25,11 +25,11 @@ async def get_collection():
 
     data = await client.get_collection(collection_address=COLLECTION)
     items = await client.get_collection_items(collection=data, limit_per_one_request=20)
-
+    items_data = []
     for item in items:
         #print(item.address)
         
-        data1 = await client.get_nft_items(nft_addresses=[item.address])
-
+        nft_value = await client.get_nft_items(nft_addresses=[item.address])
+        items_data.append(nft_value)
         #print(data1[0]) 
-    return {"message": "Success", "response": items}
+    return {"message": "Success", "response": items_data}
