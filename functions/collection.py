@@ -8,6 +8,6 @@ def parse_response(response):
             "address": item[0],
             **item[1]
         }
-        for item in response['data']['response']
+        for item in response
     ]
 
