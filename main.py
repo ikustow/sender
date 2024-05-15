@@ -9,6 +9,7 @@ from tonsdk.contract.token.nft import NFTItem
 from tonsdk.utils import to_nano, bytes_to_b64str, Address
 from tonsdk.contract.wallet import Wallets, WalletVersionEnum
 from cryptography.fernet import Fernet
+from functions.collection import parse_response
 from functions.sending import send_message
 from model.CreateMessageRequestClass import CreateMessageRequest
 
@@ -32,4 +33,5 @@ async def get_collection():
         nft_value = await client.get_nft_items(nft_addresses=[item.address])
         items_data.append([item.address, nft_value[0].metadata])
         #print(data1[0]) 
-    return {"message": "Success", "response": items_data}
+    parsed_data = parse_response(items_data)
+    return {"message": "Success", "response": parsed_data}
