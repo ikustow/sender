@@ -12,7 +12,7 @@ from cryptography.fernet import Fernet
 from functions.collection import parse_response
 from functions.sending import send_message
 from model.CreateMessageRequestClass import CreateMessageRequest
-
+COLLECTION = 'EQBs85otZAYdYQNSUEUWg_C7DnKERAFvPaJtKcKlI9Po8S0e'
 app = FastAPI()
 
 @app.post("/send_message")
@@ -21,17 +21,22 @@ async def handle_send_message(request: CreateMessageRequest):
 
 @app.get("/collection")
 async def get_collection():
-    COLLECTION = 'EQBs85otZAYdYQNSUEUWg_C7DnKERAFvPaJtKcKlI9Po8S0e'
+   
     client = TonCenterClient(orbs_access=True)
-
+    
     data = await client.get_collection(collection_address=COLLECTION)
     items = await client.get_collection_items(collection=data, limit_per_one_request=20)
     items_data = []
+    parsed_items = []
+    
     for item in items:
-        #print(item.address)
-        
         nft_value = await client.get_nft_items(nft_addresses=[item.address])
         items_data.append([item.address, nft_value[0].metadata])
-        #print(data1[0]) 
-    parsed_data = parse_response(items_data)
-    return {"message": "Success", "response": json.dumps(parsed_data, indent=4)}
+    
+    for item_data_value in items_data:
+        parsed_items.append({
+            "address": item_data_value[0],
+            **item_data_value[1]
+        })
+    
+    return {"message": "Success", "response": parsed_items}
