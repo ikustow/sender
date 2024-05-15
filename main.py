@@ -30,6 +30,6 @@ async def get_collection():
         #print(item.address)
         
         nft_value = await client.get_nft_items(nft_addresses=[item.address])
-        items_data.append(nft_value[0])
+        items_data.append(nft_value[0].metadata)
         #print(data1[0]) 
     return {"message": "Success", "response": items_data}
