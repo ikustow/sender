@@ -34,4 +34,4 @@ async def get_collection():
         items_data.append([item.address, nft_value[0].metadata])
         #print(data1[0]) 
     parsed_data = parse_response(items_data)
-    return {"message": "Success", "response": parsed_data}
+    return {"message": "Success", "response": json.dumps(parsed_data, indent=4)}
