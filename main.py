@@ -59,8 +59,10 @@ async def get_collection():
    
     client = TonCenterClient(orbs_access=True)
     
-    data = await client.get_collection(collection_address=COLLECTION)
-    items = await client.get_collection_items(collection=data, limit_per_one_request=20)
+    #data = await client.get_collection(collection_address=COLLECTION)
+    #items = await client.get_collection_items(collection=data, limit_per_one_request=20)
+    items = ['EQDkT6tXU784fXSjShCmu1-eMuiDQ0LkRewz4Ae8r-Z8eOjK','EQB4NG0xJXMgqfhkpc_vtgefPN9A6dtFBIyE3GjHMpyezLce',
+             'EQBod5p-wtHwvsyn3zcqrlSzGffLEnIYCgY14ujNtYpv5QJu', 'EQB5XTy4fA-YFO4VxGIWCenajOnxi4I2-vcXHMxRDHUV52Un', 'EQBFBxa5M8FqaE_hHHj4d6-anzosUGPIy2d1ArZuwAyQFsnz']
     items_data = []
     parsed_items = []
     
@@ -69,10 +71,11 @@ async def get_collection():
         items_data.append([item.address, nft_value[0].metadata,nft_value[0].owner])
     
     for item_data_value in items_data:
-        parsed_items.append({
-            "address": item_data_value[0],
-            "owner": item_data_value[2],
-            **item_data_value[1]
-        })
+        if item_data_value[2] == 'EQCwpZzbHVqKBtGgUEkMn0IziI1WBDMIOVXZxW2lLg2wwHVT':
+            parsed_items.append({
+                "address": item_data_value[0],
+                "owner": item_data_value[2],
+                **item_data_value[1]
+            })
     
     return {"message": "Success", "response": parsed_items}
