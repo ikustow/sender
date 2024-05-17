@@ -66,7 +66,7 @@ async def get_collection():
     
     for item in items:
         nft_value = await client.get_nft_items(nft_addresses=[item.address])
-        items_data.append([item.address, nft_value[0].metadata],nft_value[0].owner)
+        items_data.append([item.address, nft_value[0].metadata,nft_value[0].owner])
     
     for item_data_value in items_data:
         parsed_items.append({
