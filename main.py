@@ -71,7 +71,7 @@ async def get_collection():
         items_data.append([item.address, nft_value[0].metadata,nft_value[0].owner])
     
     for item_data_value in items_data:
-        if item_data_value[2] == 'EQCwpZzbHVqKBtGgUEkMn0IziI1WBDMIOVXZxW2lLg2wwHVT':
+        if item_data_value[2] == 'UQCwpZzbHVqKBtGgUEkMn0IziI1WBDMIOVXZxW2lLg2wwCiW':
             parsed_items.append({
                 "address": item_data_value[0],
                 "owner": item_data_value[2],
