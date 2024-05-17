@@ -67,8 +67,8 @@ async def get_collection():
     parsed_items = []
     
     for item in items:
-        nft_value = await client.get_nft_items(nft_addresses=[item.address])
-        items_data.append([item.address, nft_value[0].metadata,nft_value[0].owner])
+        nft_value = await client.get_nft_items(nft_addresses=[item])
+        items_data.append([item, nft_value[0].metadata,nft_value[0].owner])
     
     for item_data_value in items_data:
         if item_data_value[2] == 'UQCwpZzbHVqKBtGgUEkMn0IziI1WBDMIOVXZxW2lLg2wwCiW':
