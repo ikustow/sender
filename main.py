@@ -12,7 +12,7 @@ from cryptography.fernet import Fernet
 from functions.collection import parse_response
 from model.CreateMessageRequestClass import CreateMessageRequest
 
-COLLECTION = 'EQBs85otZAYdYQNSUEUWg_C7DnKERAFvPaJtKcKlI9Po8S0e'
+COLLECTION = 'EQBrs_orLsdTbHsmx0Y2wHSG7kRs5Qjpn7aon0-TIFkLpcoc'
 
 
 
@@ -55,23 +55,28 @@ def send_message(request: CreateMessageRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/collection")
-async def get_collection():
-   
+async def get_collection1():
     client = TonCenterClient(orbs_access=True)
     
-    #data = await client.get_collection(collection_address=COLLECTION)
-    #items = await client.get_collection_items(collection=data, limit_per_one_request=20)
-    items = ['EQDkT6tXU784fXSjShCmu1-eMuiDQ0LkRewz4Ae8r-Z8eOjK','EQB4NG0xJXMgqfhkpc_vtgefPN9A6dtFBIyE3GjHMpyezLce',
-             'EQBod5p-wtHwvsyn3zcqrlSzGffLEnIYCgY14ujNtYpv5QJu', 'EQB5XTy4fA-YFO4VxGIWCenajOnxi4I2-vcXHMxRDHUV52Un', 'EQBFBxa5M8FqaE_hHHj4d6-anzosUGPIy2d1ArZuwAyQFsnz']
+    data = await client.get_collection(collection_address=COLLECTION)
+    items = await client.get_collection_items(collection=data, limit_per_one_request=20)
+  
     items_data = []
     parsed_items = []
     
+
     for item in items:
-        nft_value = await client.get_nft_items(nft_addresses=[item])
-        items_data.append([item, nft_value[0].metadata,nft_value[0].owner])
+
+        nft_value = await client.get_nft_items(nft_addresses=[item.address])
+
+        if nft_value:
+            items_data.append([item.address, nft_value[0].metadata, nft_value[0].owner])
+        else:
+            print(f"Error: No data returned for item {item}")
     
     for item_data_value in items_data:
-        if item_data_value[2] == 'UQCwpZzbHVqKBtGgUEkMn0IziI1WBDMIOVXZxW2lLg2wwCiW':
+       
+        if item_data_value[2] == 'EQCwpZzbHVqKBtGgUEkMn0IziI1WBDMIOVXZxW2lLg2wwHVT':
             parsed_items.append({
                 "address": item_data_value[0],
                 "owner": item_data_value[2],
