@@ -9,7 +9,6 @@ from tonsdk.contract.token.nft import NFTItem
 from tonsdk.utils import to_nano, bytes_to_b64str, Address
 from tonsdk.contract.wallet import Wallets, WalletVersionEnum
 from cryptography.fernet import Fernet
-from functions.collection import parse_response
 from model.CreateMessageRequestClass import CreateMessageRequest
 
 COLLECTION = 'EQBrs_orLsdTbHsmx0Y2wHSG7kRs5Qjpn7aon0-TIFkLpcoc'
