@@ -1,14 +1,15 @@
 import asyncio
-from TonTools import TonCenterClient
+from TonTools import *
 
 COLLECTION = 'EQBrs_orLsdTbHsmx0Y2wHSG7kRs5Qjpn7aon0-TIFkLpcoc'
 
 async def get_collection1():
+
     client = TonCenterClient(orbs_access=True)
-    
+
     data = await client.get_collection(collection_address=COLLECTION)
     items = await client.get_collection_items(collection=data, limit_per_one_request=20)
-  
+
     items_data = []
     parsed_items = []
     

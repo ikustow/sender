@@ -54,32 +54,30 @@ def send_message(request: CreateMessageRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/collection")
-async def get_collection1():
-    client = TonCenterClient(orbs_access=True)
-    
-    data = await client.get_collection(collection_address=COLLECTION)
-    items = await client.get_collection_items(collection=data, limit_per_one_request=20)
-  
-    items_data = []
-    parsed_items = []
-    
+async def get_collection():
+    main_address = 'UQCwpZzbHVqKBtGgUEkMn0IziI1WBDMIOVXZxW2lLg2wwCiW'
+    async with aiohttp.ClientSession() as session:
+        async with session.get(f'https://tonapi.io/v2/accounts/{main_address}/nfts?offset=0&indirect_ownership=true') as response:
+            if response.status == 200:
+                json_response = await response.json()
+                nft_items = json_response.get('nft_items', [])
 
-    for item in items:
+                filtered_items = [item for item in nft_items if item.get('collection', {}).get('address') == '0:6bb3fa2b2ec7536c7b26c74636c07486ee446ce508e99fb6a89f4f9320590ba5']
 
-        nft_value = await client.get_nft_items(nft_addresses=[item.address])
+                parsed_items = []
+                for item in filtered_items:
+                    metadata = item.get('metadata')
+                    if metadata:
+                        parsed_item = {
+                            'address': item['address'],
+                            'name': metadata['description'],
+                            'image': metadata['image']
+                        }
+                        parsed_items.append(parsed_item)
 
-        if nft_value:
-            items_data.append([item.address, nft_value[0].metadata, nft_value[0].owner])
-        else:
-            print(f"Error: No data returned for item {item}")
+                return {"message": "Success", "response": parsed_items}
+            else:
+                print(f'Error: {response.status}')
+                return {"message": "Success", "response": parsed_items}
     
-    for item_data_value in items_data:
-       
-        if item_data_value[2] == 'EQCwpZzbHVqKBtGgUEkMn0IziI1WBDMIOVXZxW2lLg2wwHVT':
-            parsed_items.append({
-                "address": item_data_value[0],
-                "owner": item_data_value[2],
-                **item_data_value[1]
-            })
-    
-    return {"message": "Success", "response": parsed_items}
+   
